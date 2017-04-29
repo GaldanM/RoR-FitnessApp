@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@import 'materialize';
+
+nav .brand-logo {
+  margin-left: 10px;
+}
+
+nav ul {
+  margin-right: 10px
+}

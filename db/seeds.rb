@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Admin.create(login: 'admin', password: 'admin')
+
+CustomPage.create(title: 'Halloween', text: 'If you subscribe to the Yoga class, you wil die by fear !')
+CustomPage.create(title: 'Christmas', text: 'Merry Christmas !')
+
+Message.create(name: 'Galdan MOULINNEUF', phone: '+33605425326', email: 'g.moulinneuf@outlook.fr', text: 'Hi, my name is Galdan', date: Time.now)
+Message.create(name: 'Galdan MOULINNEUF', phone: '+33605425326', email: 'g.moulinneuf@outlook.fr', text: 'Hi, my name is Galdan', date: Time.now.midnight)
+
+Membership.create(title: 'Bronze', description: 'Have access to every machines', price: 20)
+Membership.create(title: 'Silver', description: 'Bronze avantages + free eneretic drinks and dietetic food', price: 50)
+Membership.create(title: 'Gold', description: 'Silver avantages + personal trainer', price: 100)
+
+Course.create(title: 'Yoga', day: 'Monday', time: '15:00', description: 'Yoga class', instructor: 'Julius', start_date: Time.new(2017, 05, 01).midnight)

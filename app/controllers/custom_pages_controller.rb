@@ -1,0 +1,2 @@
+class CustomPagesController < ApplicationController
+end

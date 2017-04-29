@@ -1,0 +1,46 @@
+<% provide(:title, 'Memberships') %>
+<div>
+  <% if Membership.all.any? %>
+      <table class='bordered highlight'>
+        <thead>
+          <tr>
+            <th class="center">Title</th>
+            <th class="center">Description</th>
+            <th class="center">Price</th>
+            <% if current_admin %>
+                <th class="center">Action</th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% Membership.all.each do |m| %>
+              <tr>
+                <td class="center"><%= m.title %></td>
+                <td class="center"><%= simple_format(m.description) %></td>
+                <td class="center"><%= m.price %>€</td>
+                <% if current_admin %>
+                    <td class="center">
+                      <%= link_to 'Edit', edit_membership_path(m), { :method => :get, class: 'btn' } %>
+                      <%= button_to 'Delete', membership_path(m), { :method => :delete, class: 'btn' } %>
+                    </td>
+                <% end %>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <div>
+        You haven't created any membership yet, click on the green round button to create one !
+      </div>
+  <% end %>
+  <% if current_admin %>
+      <div class="fixed-action-btn horizontal">
+        <%= link_to new_membership_path do %>
+            <div id="newMembership" class="green btn-floating btn-large waves-effect waves-light red">
+              <i class="material-icons">add</i>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>

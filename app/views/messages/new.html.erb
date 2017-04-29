@@ -1,0 +1,18 @@
+<% provide(:title, 'Contact') %>
+<div>
+  <%= form_for(:formMessage, url: messages_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, :required => true %>
+
+      <%= f.label :phone %>
+      <%= f.telephone_field :phone, :required => true %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, :required => true %>
+
+      <%= f.label :text %>
+      <%= f.text_area :text, :required => true %>
+
+      <%= f.submit 'Send' %>
+  <% end %>
+</div>

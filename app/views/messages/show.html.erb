@@ -1,0 +1,11 @@
+<% provide(:title, 'Message from ' + @message.name) %>
+<div>
+  <p>Message from <%= @message.name %></p>
+  <p>Phone number : <%= @message.phone %></p>
+  <p>Email : <%= @message.email %></p>
+  <p>Date : <%= @message.date.to_s(:long) %></p>
+  <p>
+    <%= simple_format(@message.text) %>
+  </p>
+  <%= button_to 'Delete', message_path(@message), :method => :delete %>
+</div>
