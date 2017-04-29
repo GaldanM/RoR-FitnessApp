@@ -1,0 +1,34 @@
+<% provide(:title, 'Messages') %>
+<div>
+  <% if Message.all.any? %>
+      <table class='bordered highlight'>
+        <thead>
+          <tr>
+            <th class="center">Message</th>
+            <th class="center">Sender</th>
+            <th class="center">Phone number</th>
+            <th class="center">Email</th>
+            <th class="center">Time</th>
+            <th class="center">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% Message.all.each do |m| %>
+              <tr>
+                <td><%= link_to simple_format(m.text.truncate(40)), m %></td>
+                <td class="center"><%= m.name %></td>
+                <td class="center"><%= m.phone %></td>
+                <td class="center"><%= m.email %></td>
+                <td class="center"><%= humanize(Time.now - m.date) %> ago</td>
+                <td class="center"><%= button_to 'Delete', message_path(m), :method => :delete %></td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <div>
+        You haven't received any message yet, be patient !
+      </div>
+  <% end %>
+</div>

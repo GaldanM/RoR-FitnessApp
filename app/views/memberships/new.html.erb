@@ -1,0 +1,15 @@
+<% provide(:title, 'Create a new membership') %>
+<div>
+  <%= form_for(:formMembership, url: memberships_path) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, :required => true %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, :required => true %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, :required => true %>
+
+      <%= f.submit 'Create' %>
+  <% end %>
+</div>

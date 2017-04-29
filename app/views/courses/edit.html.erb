@@ -1,0 +1,15 @@
+<% provide(:title, 'Edit ' + @course.title + ' course') %>
+<div>
+  <%= form_for(:formCourse, method: :patch, url: course_path(@course)) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, { value: @course.title, :required => true } %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, { value: @course.price, :required => true } %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, { value: @course.description, :required => true } %>
+
+      <%= f.submit 'Save' %>
+  <% end %>
+</div>

@@ -1,0 +1,52 @@
+<% provide(:title, 'Courses') %>
+<div>
+  <% if Course.all.any? %>
+      <table class='bordered highlight'>
+        <thead>
+          <tr>
+            <th class="center">Title</th>
+            <th class="center">Description</th>
+            <th class="center">Day</th>
+            <th class="center">Time</th>
+            <th class="center">Instructor</th>
+            <th class="center">Date Beginning</th>
+            <% if current_admin %>
+                <th class="center">Action</th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% Course.all.each do |c| %>
+              <tr>
+                <td class="center"><%= c.title %></td>
+                <td class="center"><%= simple_format(c.description) %></td>
+                <td class="center"><%= c.day %></td>
+                <td class="center"><%= c.time %></td>
+                <td class="center"><%= c.instructor %></td>
+                <td class="center"><%= c.start_date.to_s(:long) %></td>
+                <% if current_admin %>
+                    <td class="center">
+                      <%= link_to 'Edit', edit_course_path(c), { :method => :get, class: 'btn' } %>
+                      <%= button_to 'Delete', course_path(c), { :method => :delete, class: 'btn' } %>
+                    </td>
+                <% end %>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <div>
+        You haven't created any course yet, click on the green round button to create one !
+      </div>
+  <% end %>
+  <% if current_admin %>
+      <div class="fixed-action-btn horizontal">
+        <%= link_to new_course_path do %>
+            <div id="newCourse" class="green btn-floating btn-large waves-effect waves-light red">
+              <i class="material-icons">add</i>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>

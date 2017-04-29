@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <% flash.each do |message_type, message| %>
+      <% if message_type == 'success' %>
+          <%= javascript_tag "Materialize.toast('#{message}', 4000, 'green')" %>
+      <% elsif message_type == 'danger' %>
+          <%= javascript_tag "Materialize.toast('#{message}', 4000, 'red accent-2')" %>
+      <% else %>
+          <%= javascript_tag "Materialize.toast('#{message}', 4000, 'blue')" %>
+      <% end %>
+  <% end %>
+</html>
