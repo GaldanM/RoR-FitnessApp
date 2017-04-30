@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :messages, except: [:new, :update, :edit]
   get 'contact' => 'messages#new'
 
-  resources :custom_pages
+  resources :custom_pages, except :index
+  
 end
