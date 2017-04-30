@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20170428190551) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "title",       null: false
-    t.string "day",         null: false
-    t.string "time",        null: false
-    t.string "description", null: false
-    t.string "instructor",  null: false
-    t.date   "start_date",  null: false
+    t.string  "title",       null: false
+    t.integer "day",         null: false
+    t.string  "time",        null: false
+    t.string  "description", null: false
+    t.string  "instructor",  null: false
+    t.date    "start_date",  null: false
   end
 
   create_table "custom_pages", force: :cascade do |t|

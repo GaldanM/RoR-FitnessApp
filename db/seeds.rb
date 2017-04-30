@@ -10,4 +10,4 @@ Membership.create(title: 'Bronze', description: 'Have access to every machines',
 Membership.create(title: 'Silver', description: 'Bronze avantages + free eneretic drinks and dietetic food', price: 50)
 Membership.create(title: 'Gold', description: 'Silver avantages + personal trainer', price: 100)
 
-Course.create(title: 'Yoga', day: 'Monday', time: '15:00', description: 'Yoga class', instructor: 'Julius', start_date: Time.new(2017, 05, 01).midnight)
+Course.create(title: 'Yoga', day: 5, time: '15:00', description: 'Yoga class', instructor: 'Julius', start_date: Time.new(2017, 05, 01).midnight)

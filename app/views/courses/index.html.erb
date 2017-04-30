@@ -6,10 +6,9 @@
           <tr>
             <th class="center">Title</th>
             <th class="center">Description</th>
-            <th class="center">Day</th>
-            <th class="center">Time</th>
+            <th class="center">Date</th>
             <th class="center">Instructor</th>
-            <th class="center">Date Beginning</th>
+            <th class="center">Begin</th>
             <% if current_admin %>
                 <th class="center">Action</th>
             <% end %>
@@ -21,8 +20,7 @@
               <tr>
                 <td class="center"><%= c.title %></td>
                 <td class="center"><%= simple_format(c.description) %></td>
-                <td class="center"><%= c.day %></td>
-                <td class="center"><%= c.time %></td>
+                <td class="center"><%= 'Every ' + get_day_from_index(c.day) + ' at ' + c.time%></td>
                 <td class="center"><%= c.instructor %></td>
                 <td class="center"><%= c.start_date.to_s(:long) %></td>
                 <% if current_admin %>

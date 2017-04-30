@@ -22,9 +22,14 @@ class CoursesController < ApplicationController
 
   def create
     return unless current_admin
-    course = Course.create(title: params[:formCourse][:title], description: params[:formCourse][:description], price: Float(params[:formCourse][:price]))
+    course = Course.create(title: params[:formCourse][:title],
+                           instructor: params[:formCourse][:instructor],
+                           day: params[:formCourse][:day],
+                           time: params[:formCourse][:hours] + ':' + params[:formCourse][:minutes],
+                           start_date: Time.parse(params[:formCourse][:start_date]),
+                           description: params[:formCourse][:description])
     if course.valid?
-      flash[:success] = 'Course \"' + params[:formCourse][:title] + '\" successfully created'
+      flash[:success] = 'Course \"' + course.title + '\" successfully created'
       redirect_to courses_path
     else
       flash.now[:danger] = 'Course \"' + params[:formCourse][:title] + '\" could not be created'
@@ -37,7 +42,13 @@ class CoursesController < ApplicationController
   def update
     return unless current_admin
     @course = Course.find(params[:id])
-    if @course.update(title: params[:formCourse][:title], description: params[:formCourse][:description], price: Float(params[:formCourse][:price]))
+    mins = params[:formCourse][:minutes] == '0' ? '00' : params[:formCourse][:minutes]
+    if @course.update(title: params[:formCourse][:title],
+                      instructor: params[:formCourse][:instructor],
+                      day: params[:formCourse][:day],
+                      time: params[:formCourse][:hours] + ':' + mins,
+                      start_date: Time.parse(params[:formCourse][:start_date]),
+                      description: params[:formCourse][:description])
       flash[:success] = 'Course \"' + @course.title + '\" successfully updated'
       redirect_to courses_path
     else

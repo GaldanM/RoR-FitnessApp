@@ -1,15 +1,48 @@
 <% provide(:title, 'Create a new course') %>
-<div>
+<div class="container form" style="text-align: center; margin-top: 50px">
   <%= form_for(:formCourse, url: courses_path) do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title, :required => true %>
 
-      <%= f.label :price %>
-      <%= f.text_field :price, :required => true %>
+      <div class="row">
+        <div class="col s3 offset-s3">
+          <%= f.label :title %>
+          <%= f.text_field :title, required: true %>
+        </div>
+        <div class="col s3">
+          <%= f.label :instructor %>
+          <%= f.text_field :instructor, required: true %>
+        </div>
+      </div>
 
-      <%= f.label :description %>
-      <%= f.text_area :description, :required => true %>
+      <div class="row">
+        <div class=".input-field col s3 offset-s3">
+          <%= f.label :day %>
+          <%= f.select(:day, days, { prompt: 'Choose the day' }, { required: true, id: 'selectDay' }) %>
+        </div>
+        <div class="col s3">
+          <%= f.label :start_date %>
+          <%= f.text_field :start_date, { placeholder: 'Choose the date', disabled: true, required: true, class: 'datepicker', type: 'date' } %>
+        </div>
+      </div>
 
-      <%= f.submit 'Create' %>
+      <div class="row">
+        <div class=".input-field col s2 offset-s4">
+          <%= f.label :hours %>
+          <%= f.select :hours, hours, { prompt: 'Choose the hour' }, required: true %>
+        </div>
+
+        <div class=".input-field col s2">
+          <%= f.label :minutes %>
+          <%= f.select :minutes, minutes, { prompt: 'Choose the minutes' }, required: true %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=".input-field col s6 offset-s3">
+          <%= f.label :description %>
+          <%= f.text_area :description, { required: true, class: 'materialize-textarea' } %>
+        </div>
+      </div>
+
+      <%= f.submit 'Create', {class: 'btn', style: 'margin-bottom: 50px'} %>
   <% end %>
 </div>
