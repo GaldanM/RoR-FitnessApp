@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
     $('select').material_select();
 
     var datepicker = $('.datepicker');
@@ -33,10 +33,10 @@ $(document).ready(function () {
         datepicker.prop("disabled", false);
     }
 
-   selectDay.change(function () {
-       selected = selectDay.prop('selectedIndex');
+    selectDay.change(function () {
+        selected = selectDay.prop('selectedIndex');
         var picker = datepicker.pickadate('picker');
-        if (selected !== "undefined") {
+        if (selected !== "undefined" && selected !== 0) {
             var array = [];
             for (var i = 0; i < 8; ++i) {
                 if (i !== selected)
