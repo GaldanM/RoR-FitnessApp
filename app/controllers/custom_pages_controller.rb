@@ -38,11 +38,11 @@ class CustomPagesController < ApplicationController
      # PATCH /custom_pages/:id
     
     def update
-        return if current_admin
+        return unless current_admin
     
         @custom_page = CustomPage.find(params[:id])
     
-        if @custom_page.update(title: params[:formCP][:title], text: params[:formCP][:text])
+        if @custom_page.update(title: params[:formCustomPage][:title], text: params[:formCustomPage][:text])
             flash[:success] = 'Your static page has been updated'
             redirect_to root_path
         else
