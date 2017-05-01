@@ -1,0 +1,12 @@
+<% provide(:title, 'new static page') %>
+<div>
+  <%= form_for(:formCP, url: messages_path) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, :required => true %>
+
+      <%= f.label :text %>
+      <%= f.telephone_field :text, :required => true %>
+
+      <%= f.submit 'Send' %>
+  <% end %>
+</div>
