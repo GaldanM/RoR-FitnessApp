@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   resources :courses
 
-  get 'courses/:id_course/bookings' => 'sessions#new'
-  post 'courses/:id_course/bookings' => 'sessions#create'
-  delete 'courses/:id_course/bookings/:id_booking' => 'sessions#delete'
+  resources :courses do
+    resources :bookings, only: [:new, :create, :destroy]
+  end
 
   resources :memberships, except: :show
 

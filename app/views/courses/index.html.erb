@@ -1,38 +1,70 @@
 <% provide(:title, 'Courses') %>
-<div>
+<div class="container">
   <% if Course.all.any? %>
-      <table class='bordered highlight'>
-        <thead>
-          <tr>
-            <th class="center">Title</th>
-            <th class="center">Description</th>
-            <th class="center">Date</th>
-            <th class="center">Instructor</th>
-            <th class="center">Begin</th>
-            <% if current_admin %>
-                <th class="center">Action</th>
-            <% end %>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% Course.all.each do |c| %>
-              <tr>
-                <td class="center"><%= c.title %></td>
-                <td class="center"><%= simple_format(c.description) %></td>
-                <td class="center"><%= 'Every ' + get_day_from_index(c.day) + ' at ' + c.time%></td>
-                <td class="center"><%= c.instructor %></td>
-                <td class="center"><%= c.start_date.to_s(:long) %></td>
+      <ul class="collapsible" data-collapsible="accordion">
+        <% Course.all.each do |c| %>
+            <li>
+              <div class="collapsible-header">
+                <div class="row valign-wrapper">
+                  <h5 class="col s2 center"><%= c.title %></h5>
+                  <div class="col s2 center"><%= c.instructor %></div>
+                  <div class="col s2 center"><%= 'Every ' + get_day_from_index(c.day) + ' at ' + c.time %></div>
+                  <div class="col s2 center"><%= 'Starts on ' + c.start_date.to_s(:long) %></div>
+                  <div class="col s2 center"><%= simple_format(c.description) %></div>
+                  <% if current_admin %>
+                      <div class="col s2 center">
+                        <%= link_to 'Edit', edit_course_path(c), { :method => :get, class: 'btn blue' } %>
+                        <%= button_to 'Delete', course_path(c), { :method => :delete, class: 'btn red' } %>
+                      </div>
+                  <% else %>
+                      <div class="center">
+                        <%= link_to 'Book', new_course_booking_path(c), { :method => :get, class: 'btn blue' } %>
+                      </div>
+                  <% end %>
+                </div>
                 <% if current_admin %>
-                    <td class="center">
-                      <%= link_to 'Edit', edit_course_path(c), { :method => :get, class: 'btn' } %>
-                      <%= button_to 'Delete', course_path(c), { :method => :delete, class: 'btn' } %>
-                    </td>
+                    <div class="row center">
+                      <span class="material-icons">arrow_drop_down</span>
+                    </div>
                 <% end %>
-              </tr>
-          <% end %>
-        </tbody>
-      </table>
+              </div>
+              <% if current_admin %>
+                  <div class="collapsible-body">
+                    <% if c.bookings.any? %>
+                        <table class='bordered highlight'>
+                          <thead>
+                            <tr>
+                              <th class="center">Name</th>
+                              <th class="center">Email</th>
+                              <th class="center">Phone</th>
+                              <th class="center">Membership No</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% c.bookings.each do |b| %>
+                                <tr>
+                                  <td class="center"><%= b.name %></td>
+                                  <td class="center"><%= b.email %></td>
+                                  <td class="center"><%= b.phone %></td>
+                                  <td class="center"><%= b.membership %></td>
+                                  <% if current_admin %>
+                                      <td class="center">
+                                        <%= button_to 'Delete', course_booking_path(c, b), { :method => :delete, class: 'btn red' } %>
+                                      </td>
+                                  <% end %>
+                                </tr>
+                            <% end %>
+                          </tbody>
+                        </table>
+                    <% else %>
+                        This class has no bookings yet
+                    <% end %>
+                  </div>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
   <% else %>
       <div>
         You haven't created any course yet, click on the green round button to create one !

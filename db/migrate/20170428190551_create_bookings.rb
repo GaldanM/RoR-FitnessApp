@@ -5,7 +5,7 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.string :phone, null: false
       t.string :email, null: false
       t.string :membership
-      t.belongs_to :course, index: true, null: false
+      t.belongs_to :course, index: true
     end
   end
 end

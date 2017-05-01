@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170428190551) do
     t.string  "phone",      null: false
     t.string  "email",      null: false
     t.string  "membership"
-    t.integer "course_id",  null: false
+    t.integer "course_id"
     t.index ["course_id"], name: "index_bookings_on_course_id"
   end
 

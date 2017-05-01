@@ -1,0 +1,37 @@
+<% provide(:title, 'Register to ' + @course.title) %>
+<div class="container form" style="text-align: center; margin-top: 50px">
+  <%= form_for(:formBooking, url: course_bookings_path(@course)) do |f| %>
+
+      <div class="row">
+        <div class="col s4 offset-s4">
+          <%= f.label :name %>
+          <%= f.text_field :name, required: true %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s3 offset-s3">
+          <%= f.label :phone %>
+          <%= f.phone_field :phone, required: true %>
+        </div>
+        <div class="col s3">
+          <%= f.label :email %>
+          <%= f.email_field :email, required: true %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s4 offset-s4">
+          <%= f.label 'Membership No' %>
+          <%= f.text_field :membership %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s4 offset-s4">
+          <%= link_to 'Cancel', courses_path, { :method => :get, class: 'btn red' } %>
+          <%= f.submit 'Create', { class: 'btn green' } %>
+        </div>
+      </div>
+  <% end %>
+</div>

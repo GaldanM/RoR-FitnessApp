@@ -29,7 +29,7 @@ module CoursesHelper
 
   def get_day_from_index(index)
     arr = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
-    arr[index]
+    arr[index - 1]
   end
 
   def get_day_from_name(name)
