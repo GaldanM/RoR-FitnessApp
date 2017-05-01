@@ -1,1 +1,14 @@
 <% provide(:title, 'show static page') %>
+
+<h1><%= @custom_page.title %></h1>
+<p><%= @custom_page.text %></p>
+
+  <% if current_admin %>
+      <div class="fixed-action-btn horizontal">
+        <%= link_to edit_custom_page_path do %>
+            <div id="edit custom page" class="green btn-floating btn-large waves-effect waves-light red">
+              <i class="material-icons">E</i>
+            </div>
+        <% end %>
+      </div>
+  <% end %>

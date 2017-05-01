@@ -3,6 +3,7 @@ class CustomPagesController < ApplicationController
 # GET /memberships/new
 
     def show
+        @custom_page = CustomPage.find(params[:id])
     end
     
     # GET /custom_pages/new
@@ -15,7 +16,7 @@ class CustomPagesController < ApplicationController
     
     def edit
         !current_admin && redirect_to(custom_pages_path)
-        @custom_page = Custom_page.find(params[:id])
+        @custom_page = CustomPage.find(params[:id])
     end
     
     # POST /custom_pages
@@ -23,7 +24,7 @@ class CustomPagesController < ApplicationController
     def create
         return if current_admin
     
-        custom_page = Custom_page.create(title: params[:formCP][:title], text: params[:formCP][:text])
+        custom_page = CustomPage.create(title: params[:formCustomPage][:title], text: params[:formCustomPage][:text])
     
         if custom_page.valid?
             flash[:success] = 'Your static page has been created succefully'
@@ -39,7 +40,7 @@ class CustomPagesController < ApplicationController
     def update
         return if current_admin
     
-        @custom_page = Custom_page.find(params[:id])
+        @custom_page = CustomPage.find(params[:id])
     
         if @custom_page.update(title: params[:formCP][:title], text: params[:formCP][:text])
             flash[:success] = 'Your static page has been updated'
@@ -54,7 +55,7 @@ class CustomPagesController < ApplicationController
       def destroy
         return unless current_admin
         
-        custom_page = Custom_page.find(params[:id])
+        custom_page = CustomPage.find(params[:id])
         
         title = custom_page.title
         text = custom_page.text
