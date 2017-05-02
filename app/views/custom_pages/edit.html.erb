@@ -1,6 +1,6 @@
 <% provide(:title, 'Edit ' + @custom_page.title) %>
 <div class="container form">
-  <%= form_for(:formCustomPage, method: :patch, url: custom_page_path(@custom_page)) do |f| %>
+  <%= form_for :formCustomPage, method: :patch, url: custom_page_path(@custom_page) do |f| %>
 
       <div class="row">
         <div class=".input-field col s4 offset-s4">
