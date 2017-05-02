@@ -1,23 +1,27 @@
 <% provide(:title, 'Edit ' + @custom_page.title) %>
-<div class="container form" style="text-align: center; margin-top: 50px">
+<div class="container form">
   <%= form_for(:formCustomPage, method: :patch, url: custom_page_path(@custom_page)) do |f| %>
 
       <div class="row">
-        <div class="col s3 offset-s3">
+        <div class=".input-field col s4 offset-s4">
           <%= f.label :title %>
           <%= f.text_field :title, { value: @custom_page.title, required: true } %>
         </div>
-        <div class="col s3">
+      </div>
+
+      <div class="row">
+        <div class=".input-field col s4 offset-s4">
           <%= f.label :text %>
-          <%= f.text_field :text, { value: @custom_page.text, required: true } %>
+          <%= f.text_area :text, { value: @custom_page.text, required: true, class: 'materialize-textarea' } %>
         </div>
       </div>
 
       <div class="row">
         <div class="col s4 offset-s4">
-          <%= link_to 'Cancel', custom_page_path, { :method => :get, class: 'btn red' } %>
+          <%= link_to 'Cancel', custom_pages_path, { :method => :get, class: 'btn red' } %>
           <%= f.submit 'Save', { class: 'btn green' } %>
         </div>
       </div>
+
   <% end %>
 </div>
