@@ -1,6 +1,6 @@
 <% provide(:title, 'new static page') %>
 <div>
-  <%= form_for(:formCP, url: messages_path) do |f| %>
+  <%= form_for(:formCustomPage, url: messages_path) do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title, :required => true %>
 
