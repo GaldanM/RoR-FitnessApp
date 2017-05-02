@@ -1,27 +1,27 @@
-<% provide(:title, 'Contact') %>
+<% provide(:title, 'FitnessApp - ' +  'Contact us') %>
 <div class="container form">
   <%= form_for(:formMessage, url: messages_path) do |f| %>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :name %>
           <%= f.text_field :name, required: true %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s3 offset-s3">
+        <div class="input-field col s3 offset-s3">
           <%= f.label :phone %>
           <%= f.phone_field :phone, required: true %>
         </div>
-        <div class=".input-field col s3">
+        <div class="input-field col s3">
           <%= f.label :email %>
           <%= f.email_field :email, required: true %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="col s4 offset-s4">
           <%= f.label 'Message' %>
           <%= f.text_area :text, { required: true, class: 'materialize-textarea' } %>
         </div>

@@ -1,0 +1,50 @@
+<% provide(:title, 'FitnessApp - ' + 'Manage pictures') %>
+<div class="container form">
+
+  <h5>Add a Picture</h5>
+
+  <%= form_for(:formPicture, url: pictures_path) do |f| %>
+
+      <div class="row file-field input-field">
+        <div class="btn col s1 offset-s4">
+          <span>File</span>
+          <%= f.file_field :image, { type: 'file', required: true } %>
+        </div>
+        <div class="file-path-wrapper col s3">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s4 offset-s4">
+          <%= f.label :caption %>
+          <%= f.text_area :caption, { required: true, class: 'materialize-textarea' } %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 center">
+          <%= f.submit 'Add', { class: 'btn green' } %>
+        </div>
+      </div>
+  <% end %>
+
+  <% if Picture.all.any? %>
+      <div class="divider"></div>
+
+      <h5>Delete Pictures</h5>
+
+      <%= form_for(:formDeletePictures, method: :delete, url: pictures_path) do |f| %>
+          <div class="row">
+            <%= f.select(:pictures, pics, {}, { multiple: 'multiple', required: true, id: 'selectDeletePics' }) %>
+          </div>
+
+          <div class="row">
+            <div class="col s12 center">
+              <%= f.submit 'Delete', { id: 'buttonDeletePictures', disabled: true, class: 'btn red' } %>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+
+</div>

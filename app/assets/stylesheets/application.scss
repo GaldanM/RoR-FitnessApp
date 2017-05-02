@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require image-picker
  *= require_tree .
  */
 @import 'materialize';
@@ -63,4 +64,8 @@ nav ul {
 
 form.button_to {
   display: inline;
+}
+
+img.image_picker_image {
+  height: 150px;
 }

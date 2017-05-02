@@ -1,23 +1,23 @@
-<% provide(:title, 'Create a new membership') %>
+<% provide(:title, 'FitnessApp - ' +  'Create a new membership') %>
 <div class="container form">
   <%= form_for(:formMembership, url: memberships_path) do |f| %>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :title %>
           <%= f.text_field :title, required: true %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :price %>
           <%= f.phone_field :price, required: true %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="col s4 offset-s4">
           <%= f.label :description %>
           <%= f.text_area :description, { required: true, class: 'materialize-textarea' } %>
         </div>

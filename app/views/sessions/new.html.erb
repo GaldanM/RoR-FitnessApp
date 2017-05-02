@@ -1,16 +1,16 @@
-<% provide(:title, 'Log in') %>
+<% provide(:title, 'FitnessApp - ' +  'Log in') %>
 <div class="container form">
   <%= form_for(:formSession, url: admin_login_path) do |f| %>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :login %>
           <%= f.text_field :login, required: true %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :password %>
           <%= f.password_field :password, required: true %>
         </div>

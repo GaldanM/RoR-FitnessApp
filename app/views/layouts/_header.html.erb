@@ -2,8 +2,16 @@
 <html>
   <header>
     <ul id="custom_pages" class="dropdown-content">
-      <% CustomPage.all.each do |p| %>
+      <% CustomPage.where(editable: true).each do |p| %>
           <li><%= link_to p.title, p %></li>
+          <li class="divider"></li>
+      <% end %>
+    </ul>
+    <ul id="images" class="dropdown-content">
+      <li><%= link_to 'Gallery', pictures_path %></li>
+      <li class="divider"></li>
+      <% CustomPage.all.each do |p| %>
+          <li><%= link_to p.title, custom_page_gallery_index_path(p) %></li>
           <li class="divider"></li>
       <% end %>
     </ul>
@@ -11,10 +19,17 @@
       <div class="nav-wrapper">
         <%= link_to current_admin ? 'FitnessApp as Admin' : 'FitnessApp', root_path, class: 'brand-logo' %>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <% if CustomPage.all.any? %>
+          <% if current_admin %>
+              <li>
+                <a class="dropdown-button waves-effect waves-light" data-activates="images">
+                  Pictures <i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
+          <% end %>
+          <% if CustomPage.where(editable: true).any? %>
               <li>
                 <a class="dropdown-button waves-effect waves-light" data-activates="custom_pages">
-                  News <i class="material-icons right">arrow_drop_down</i>
+                  Others <i class="material-icons right">arrow_drop_down</i>
                 </a>
               </li>
           <% end %>
@@ -32,7 +47,7 @@
             <% if current_admin %>
                 <%= link_to 'Messages', messages_path, class: 'waves-effect waves-light' %>
             <% else %>
-                <%= link_to 'Contact', contact_path, class: 'waves-effect waves-light' %>
+                <%= link_to 'Contact us', contact_path, class: 'waves-effect waves-light' %>
             <% end %>
           </li>
           <% if current_admin %>

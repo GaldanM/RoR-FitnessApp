@@ -1,23 +1,23 @@
-<% provide(:title, 'Edit ' + @membership.title + ' membership') %>
+<% provide(:title, 'FitnessApp - ' +  'Edit ' + @membership.title + ' membership') %>
 <div class="container form">
   <%= form_for(:formMembership, method: :patch, url: membership_path(@membership)) do |f| %>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :title %>
           <%= f.text_field :title, { value: @membership.title, required: true } %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :price %>
           <%= f.phone_field :price, { value: @membership.price, required: true } %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="col s4 offset-s4">
           <%= f.label :description %>
           <%= f.text_area :description, { value: @membership.description, required: true, class: 'materialize-textarea' } %>
         </div>

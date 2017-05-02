@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-    $('select').material_select();
+    $('#selectDay').material_select();
 
     $('.collapsible').collapsible();
 

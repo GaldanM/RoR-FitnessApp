@@ -1,4 +1,4 @@
-<% provide(:title, 'Message from ' + @message.name) %>
+<% provide(:title, 'FitnessApp - ' +  'Message from ' + @message.name) %>
 <<<<<<< HEAD
 <div>
   <p>Message from <%= @message.name %></p>
@@ -13,22 +13,22 @@
 <div class="container form">
 
   <div class="row">
-    <div class=".input-field col s6 offset-s3">
+    <div class="input-field col s6 offset-s3">
       <%= 'Message from ' + @message.name + ' on ' + @message.date.to_s(:long) %>
     </div>
   </div>
 
   <div class="row">
-    <div class=".input-field col s3 offset-s3">
+    <div class="input-field col s3 offset-s3">
       <%= 'Phone number : ' + @message.phone %>
     </div>
-    <div class=".input-field col s3">
+    <div class="input-field col s3">
       <%= 'Email : ' + @message.email %>
     </div>
   </div>
 
   <div class="row">
-    <div class=".input-field col s6 offset-s3" style="text-align: left">
+    <div class="input-field col s6 offset-s3" style="text-align: left">
       <%= simple_format(@message.text) %>
     </div>
   </div>

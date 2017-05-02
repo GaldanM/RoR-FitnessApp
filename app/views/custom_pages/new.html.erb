@@ -1,15 +1,15 @@
-<% provide(:title, 'Create new Custom Page') %>
+<% provide(:title, 'FitnessApp - ' +  'Create new Custom Page') %>
 <div>
   <%= form_for(:formCustomPage, url: custom_pages_path) do |f| %>
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :title %>
           <%= f.text_field :title, required: true %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="col s4 offset-s4">
           <%= f.label :text %>
           <%= f.text_area :text, { required: true, class: 'materialize-textarea' } %>
         </div>

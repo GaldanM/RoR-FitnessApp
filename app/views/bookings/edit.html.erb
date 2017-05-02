@@ -1,27 +1,27 @@
-<% provide(:title, 'Edit booking to ' + @course.title + ' of ' + @booking.name) %>
+<% provide(:title, 'FitnessApp - ' +  'Edit booking to ' + @course.title + ' of ' + @booking.name) %>
 <div class="container form">
   <%= form_for(:formBooking, method: :patch, url: course_booking_path(@course, @booking)) do |f| %>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :name %>
           <%= f.text_field :name, { value: @booking.name, required: true } %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s3 offset-s3">
+        <div class="input-field col s3 offset-s3">
           <%= f.label :phone %>
           <%= f.phone_field :phone, { value: @booking.phone, required: true } %>
         </div>
-        <div class=".input-field col s3">
+        <div class="input-field col s3">
           <%= f.label :email %>
           <%= f.email_field :email, { value: @booking.email, required: true } %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label 'Membership No' %>
           <%= f.text_field :membership, value: @booking.membership %>
         </div>

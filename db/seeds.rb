@@ -1,5 +1,9 @@
 Admin.create(login: 'admin', password: 'admin')
 
+CustomPage.create(title: 'Homepage', text: '', editable: false)
+CustomPage.create(title: 'Planning', text: '', editable: false)
+CustomPage.create(title: 'Memberships', text: '', editable: false)
+CustomPage.create(title: 'Contact us', text: '', editable: false)
 CustomPage.create(title: 'Halloween', text: 'If you subscribe to the Yoga class, you wil die by fear !')
 CustomPage.create(title: 'Christmas', text: 'Merry Christmas !')
 

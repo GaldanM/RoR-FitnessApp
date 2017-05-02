@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428190551) do
+ActiveRecord::Schema.define(version: 20170502131240) do
 
   create_table "admins", force: :cascade do |t|
     t.string "login",           null: false
@@ -37,14 +37,16 @@ ActiveRecord::Schema.define(version: 20170428190551) do
   end
 
   create_table "custom_pages", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "text",  null: false
+    t.string  "title",                   null: false
+    t.string  "text",                    null: false
+    t.boolean "editable", default: true
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "filename", null: false
-    t.string "alt_text", null: false
-    t.string "caption",  null: false
+  create_table "custom_pages_pictures", id: false, force: :cascade do |t|
+    t.integer "custom_page_id", null: false
+    t.integer "picture_id",     null: false
+    t.index ["custom_page_id", "picture_id"], name: "index_custom_pages_pictures_on_custom_page_id_and_picture_id"
+    t.index ["picture_id", "custom_page_id"], name: "index_custom_pages_pictures_on_picture_id_and_custom_page_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -59,6 +61,12 @@ ActiveRecord::Schema.define(version: 20170428190551) do
     t.string   "email", null: false
     t.string   "text",  null: false
     t.datetime "date",  null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "filename", null: false
+    t.string "alt_text", null: false
+    t.string "caption",  null: false
   end
 
 end

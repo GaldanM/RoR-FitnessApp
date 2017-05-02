@@ -1,16 +1,16 @@
-<% provide(:title, 'Edit ' + @custom_page.title) %>
+<% provide(:title, 'FitnessApp - ' +  'Edit ' + @custom_page.title) %>
 <div class="container form">
   <%= form_for :formCustomPage, method: :patch, url: custom_page_path(@custom_page) do |f| %>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="input-field col s4 offset-s4">
           <%= f.label :title %>
           <%= f.text_field :title, { value: @custom_page.title, required: true } %>
         </div>
       </div>
 
       <div class="row">
-        <div class=".input-field col s4 offset-s4">
+        <div class="col s4 offset-s4">
           <%= f.label :text %>
           <%= f.text_area :text, { value: @custom_page.text, required: true, class: 'materialize-textarea' } %>
         </div>
