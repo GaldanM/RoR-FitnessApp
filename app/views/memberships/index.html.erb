@@ -1,5 +1,5 @@
 <% provide(:title, 'Memberships') %>
-<div>
+<div class="container table">
   <% if Membership.all.any? %>
       <table class='bordered highlight'>
         <thead>
@@ -7,9 +7,6 @@
             <th class="center">Title</th>
             <th class="center">Description</th>
             <th class="center">Price</th>
-            <% if current_admin %>
-                <th class="center">Action</th>
-            <% end %>
           </tr>
         </thead>
 
@@ -18,11 +15,11 @@
               <tr>
                 <td class="center"><%= m.title %></td>
                 <td class="center"><%= simple_format(m.description) %></td>
-                <td class="center"><%= m.price %>€</td>
+                <td class="center"><%= trim(m.price) %>€</td>
                 <% if current_admin %>
                     <td class="center">
-                      <%= link_to 'Edit', edit_membership_path(m), { :method => :get, class: 'btn' } %>
-                      <%= button_to 'Delete', membership_path(m), { :method => :delete, class: 'btn' } %>
+                      <%= link_to 'Edit', edit_membership_path(m), { :method => :get, class: 'btn blue' } %>
+                      <%= button_to 'Delete', membership_path(m), { :method => :delete, class: 'btn red' } %>
                     </td>
                 <% end %>
               </tr>

@@ -7,26 +7,31 @@
               <div class="collapsible-header">
                 <div class="row valign-wrapper">
                   <h5 class="col s2 center"><%= c.title %></h5>
-                  <div class="col s2 center"><%= c.instructor %></div>
+                  <div class="col s2 center">Held by <%= c.instructor %></div>
                   <div class="col s2 center"><%= 'Every ' + get_day_from_index(c.day) + ' at ' + c.time %></div>
                   <div class="col s2 center"><%= 'Starts on ' + c.start_date.to_s(:long) %></div>
-                  <div class="col s2 center"><%= simple_format(c.description) %></div>
                   <% if current_admin %>
-                      <div class="col s2 center">
+                      <div class="col s3 center">
                         <%= link_to 'Edit', edit_course_path(c), { :method => :get, class: 'btn blue' } %>
                         <%= button_to 'Delete', course_path(c), { :method => :delete, class: 'btn red' } %>
                       </div>
                   <% else %>
-                      <div class="center">
+                      <div class="col s3 center">
                         <%= link_to 'Book', new_course_booking_path(c), { :method => :get, class: 'btn blue' } %>
                       </div>
                   <% end %>
                 </div>
                 <% if current_admin %>
-                    <div class="row center">
-                      <span class="material-icons">arrow_drop_down</span>
+                    <div class="row">
+                      <div class="col s10"><%= simple_format(c.description) %></div>
+                      <div class="col s2">
+                        <%= link_to 'Book', new_course_booking_path(c), { :method => :get, class: 'btn green' } %>
+                      </div>
                     </div>
                 <% end %>
+                <div class="row center">
+                  <span class="material-icons">arrow_drop_down</span>
+                </div>
               </div>
               <% if current_admin %>
                   <div class="collapsible-body">
@@ -38,6 +43,7 @@
                               <th class="center">Email</th>
                               <th class="center">Phone</th>
                               <th class="center">Membership No</th>
+                              <th class="center">Date</th>
                             </tr>
                           </thead>
 
@@ -48,11 +54,9 @@
                                   <td class="center"><%= b.email %></td>
                                   <td class="center"><%= b.phone %></td>
                                   <td class="center"><%= b.membership %></td>
-                                  <% if current_admin %>
-                                      <td class="center">
-                                        <%= button_to 'Delete', course_booking_path(c, b), { :method => :delete, class: 'btn red' } %>
-                                      </td>
-                                  <% end %>
+                                  <td class="center"><%= b.date.to_s(:long) %></td>
+                                  <td><%= link_to 'Edit', edit_course_booking_path(c, b), { :method => :get, class: 'btn blue' } %></td>
+                                  <td class="center"><%= button_to 'Delete', course_booking_path(c, b), { :method => :delete, class: 'btn red' } %></td>
                                 </tr>
                             <% end %>
                           </tbody>
@@ -60,6 +64,10 @@
                     <% else %>
                         This class has no bookings yet
                     <% end %>
+                  </div>
+              <% else %>
+                  <div class="collapsible-body">
+                    <%= simple_format(c.description) %>
                   </div>
               <% end %>
             </li>
