@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170428190551) do
     t.string  "name",       null: false
     t.string  "phone",      null: false
     t.string  "email",      null: false
+    t.date    "date",       null: false
     t.string  "membership"
     t.integer "course_id"
     t.index ["course_id"], name: "index_bookings_on_course_id"

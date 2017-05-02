@@ -13,31 +13,31 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if CustomPage.all.any? %>
               <li>
-                <a class="dropdown-button" data-activates="custom_pages">
+                <a class="dropdown-button waves-effect waves-light" data-activates="custom_pages">
                   News <i class="material-icons right">arrow_drop_down</i>
                 </a>
               </li>
           <% end %>
           <% if Course.all.any? || current_admin %>
               <li>
-                <%= link_to 'Planning', courses_path %>
+                <%= link_to 'Planning', courses_path, class: 'waves-effect waves-light' %>
               </li>
           <% end %>
           <% if Membership.all.any? || current_admin %>
               <li>
-                <%= link_to 'Memberships', memberships_path %>
+                <%= link_to 'Memberships', memberships_path, class: 'waves-effect waves-light' %>
               </li>
           <% end %>
           <li>
             <% if current_admin %>
-                <%= link_to 'Messages', messages_path %>
+                <%= link_to 'Messages', messages_path, class: 'waves-effect waves-light' %>
             <% else %>
-                <%= link_to 'Contact', contact_path %>
+                <%= link_to 'Contact', contact_path, class: 'waves-effect waves-light' %>
             <% end %>
           </li>
           <% if current_admin %>
               <li>
-                <%= link_to 'Logout', admin_logout_path %>
+                <%= link_to 'Logout', admin_logout_path, class: 'waves-effect waves-light' %>
               </li>
           <% end %>
         </ul>

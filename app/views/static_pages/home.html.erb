@@ -3,6 +3,6 @@
   <% if current_admin %>
       HELLO ADMIN
   <% else %>
-      HELLO ANONYMOUS
+      Hello Anonymous, please <%= link_to 'log in', admin_login_path %> if you're an admin
   <% end %>
 </div>

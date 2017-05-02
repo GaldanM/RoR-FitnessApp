@@ -1,15 +1,35 @@
 <% provide(:title, 'Edit ' + @membership.title + ' membership') %>
-<div>
+<div class="container form">
   <%= form_for(:formMembership, method: :patch, url: membership_path(@membership)) do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title, { value: @membership.title, :required => true } %>
 
-      <%= f.label :price %>
-      <%= f.text_field :price, { value: @membership.price, :required => true } %>
+      <div class="row">
+        <div class=".input-field col s4 offset-s4">
+          <%= f.label :title %>
+          <%= f.text_field :title, { value: @membership.title, required: true } %>
+        </div>
+      </div>
 
-      <%= f.label :description %>
-      <%= f.text_area :description, { value: @membership.description, :required => true } %>
+      <div class="row">
+        <div class=".input-field col s4 offset-s4">
+          <%= f.label :price %>
+          <%= f.phone_field :price, { value: @membership.price, required: true } %>
+        </div>
+      </div>
 
-      <%= f.submit 'Save' %>
+      <div class="row">
+        <div class=".input-field col s4 offset-s4">
+          <%= f.label :description %>
+          <%= f.text_area :description, { value: @membership.description, required: true, class: 'materialize-textarea' } %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s4 offset-s4">
+          <%= link_to 'Cancel', memberships_path, { :method => :get, class: 'btn red' } %>
+          <%= f.submit 'Save', { class: 'btn green' } %>
+        </div>
+      </div>
   <% end %>
 </div>
+
+

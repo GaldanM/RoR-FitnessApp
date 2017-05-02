@@ -1,5 +1,5 @@
 <% provide(:title, 'Messages') %>
-<div>
+<div class="container table">
   <% if Message.all.any? %>
       <table class='bordered highlight'>
         <thead>
@@ -8,20 +8,19 @@
             <th class="center">Sender</th>
             <th class="center">Phone number</th>
             <th class="center">Email</th>
-            <th class="center">Time</th>
-            <th class="center">Action</th>
+            <th class="center">Date</th>
           </tr>
         </thead>
 
         <tbody>
           <% Message.all.each do |m| %>
               <tr>
-                <td><%= link_to simple_format(m.text.truncate(40)), m %></td>
+                <td><%= link_to simple_format(m.text.truncate(30)), m %></td>
                 <td class="center"><%= m.name %></td>
                 <td class="center"><%= m.phone %></td>
                 <td class="center"><%= m.email %></td>
                 <td class="center"><%= humanize(Time.now - m.date) %> ago</td>
-                <td class="center"><%= button_to 'Delete', message_path(m), :method => :delete %></td>
+                <td class="center"><%= button_to 'Delete', message_path(m), { :method => :delete, class: 'btn red' } %></td>
               </tr>
           <% end %>
         </tbody>

@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
                            instructor: params[:formCourse][:instructor],
                            day: params[:formCourse][:day],
                            time: params[:formCourse][:hours] + ':' + params[:formCourse][:minutes],
-                           start_date: Time.parse(params[:formCourse][:start_date]),
+                           start_date: DateTime.parse(params[:formCourse][:start_date]).midnight,
                            description: params[:formCourse][:description])
     if course.valid?
       flash[:success] = 'Course \"' + course.title + '\" successfully created'
@@ -42,6 +42,8 @@ class CoursesController < ApplicationController
   def update
     return unless current_admin
     @course = Course.find(params[:id])
+    date = @course.start_date
+    day = @course.day
     mins = params[:formCourse][:minutes] == '0' ? '00' : params[:formCourse][:minutes]
     if @course.update(title: params[:formCourse][:title],
                       instructor: params[:formCourse][:instructor],
@@ -50,6 +52,13 @@ class CoursesController < ApplicationController
                       start_date: Time.parse(params[:formCourse][:start_date]),
                       description: params[:formCourse][:description])
       flash[:success] = 'Course \"' + @course.title + '\" successfully updated'
+      if date != @course.start_date
+        if day != @course.day
+          @course.bookings.destroy_all
+        else
+          @course.bookings.where(['date < :start_date', {start_date: @course.start_date}]).destroy_all
+        end
+      end
       redirect_to courses_path
     else
       flash.now[:danger] = 'Course \"' + @course.title + '\" could not be updated'

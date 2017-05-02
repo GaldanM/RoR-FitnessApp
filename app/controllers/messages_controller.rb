@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
   def create
     return if current_admin
-    message = Message.create(name: params[:formMessage][:name], phone: params[:formMessage][:phone], email: params[:formMessage][:email], text: params[:formMessage][:text], date: Time.now)
+    message = Message.create(name: params[:formMessage][:name], phone: params[:formMessage][:phone], email: params[:formMessage][:email], text: params[:formMessage][:text], date: DateTime.now)
     if message.valid?
       flash[:success] = 'Your message has been sent successfully'
       redirect_to root_path

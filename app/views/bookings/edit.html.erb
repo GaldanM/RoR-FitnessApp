@@ -1,59 +1,47 @@
-<% provide(:title, 'Register to ' + @course.title) %>
+<% provide(:title, 'Edit booking to ' + @course.title + ' of ' + @booking.name) %>
 <div class="container form">
-  <%= form_for(:formBooking, url: course_bookings_path(@course)) do |f| %>
+  <%= form_for(:formBooking, method: :patch, url: course_booking_path(@course, @booking)) do |f| %>
 
       <div class="row">
         <div class=".input-field col s4 offset-s4">
           <%= f.label :name %>
-          <%= f.text_field :name, required: true %>
+          <%= f.text_field :name, { value: @booking.name, required: true } %>
         </div>
       </div>
 
       <div class="row">
         <div class=".input-field col s3 offset-s3">
           <%= f.label :phone %>
-          <%= f.phone_field :phone, required: true %>
+          <%= f.phone_field :phone, { value: @booking.phone, required: true } %>
         </div>
         <div class=".input-field col s3">
           <%= f.label :email %>
-          <%= f.email_field :email, required: true %>
+          <%= f.email_field :email, { value: @booking.email, required: true } %>
         </div>
       </div>
 
       <div class="row">
         <div class=".input-field col s4 offset-s4">
           <%= f.label 'Membership No' %>
-          <%= f.text_field :membership %>
+          <%= f.text_field :membership, value: @booking.membership %>
         </div>
       </div>
 
       <%= f.hidden_field :type, value: 'false' %>
-      <% if @course.start_date.future? %>
-          <div class="row">
-            <div class="col s4 offset-s4 switch">
-              <label>
-                One shot
-                <input type="checkbox" id="selectTypeBooking">
-                <span class="lever"></span>
-                Set of 6
-              </label>
-            </div>
-          </div>
-      <% end %>
 
       <div class="row">
         <div class="col s4 offset-s4">
           <input type="hidden" id="selectDay" value="<%= @course.day %>"/>
           <input type="hidden" id="minDate" value="<%= @course.start_date %>"/>
           <%= f.label :start_date %>
-          <%= f.text_field :start_date, { id: 'bookingPublicDatepicker', placeholder: 'Choose the date', required: true, class: 'datepicker', type: 'date' } %>
+          <%= f.text_field :start_date, { value: @booking.date,id: 'bookingPublicDatepicker', placeholder: 'Choose the date', required: true, class: 'datepicker', type: 'date' } %>
         </div>
       </div>
 
       <div class="row">
         <div class="col s4 offset-s4">
           <%= link_to 'Cancel', courses_path, { :method => :get, class: 'btn red' } %>
-          <%= f.submit 'Create', { class: 'btn green' } %>
+          <%= f.submit 'Save', { class: 'btn green' } %>
         </div>
       </div>
   <% end %>

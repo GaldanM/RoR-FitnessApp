@@ -8,13 +8,15 @@ Rails.application.routes.draw do
   resources :courses
 
   resources :courses do
-    resources :bookings, only: [:new, :create, :destroy]
+    resources :bookings, except: [:index, :show]
   end
 
   resources :memberships, except: :show
 
   resources :messages, except: [:new, :update, :edit]
   get 'contact' => 'messages#new'
+
+  resources :images
 
   resources :custom_pages, except: :index
   

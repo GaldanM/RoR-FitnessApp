@@ -3,18 +3,19 @@ $(document).on('turbolinks:load', function () {
 
     $('.collapsible').collapsible();
 
-    $('.datepicker').pickadate({
+    $('#courseAdminDatepicker').pickadate({
         firstDay: 1,
+        min: true,
         selectMonths: true,
         selectYears: true
     });
 
-    initPickdate();
+    initAdminPickdate();
 
     $('#selectDay').change(function () {
-        var datepicker = $('.datepicker');
-        var selected = $(this).prop('selectedIndex');
+        var datepicker = $('#courseAdminDatepicker');
         var picker = datepicker.pickadate('picker');
+        var selected = $(this).prop('selectedIndex');
 
         if (selected !== "undefined" && selected !== 0) {
             var array = [];
@@ -31,25 +32,31 @@ $(document).on('turbolinks:load', function () {
             datepicker.prop("disabled", true);
         }
 
-    })
+    });
+
+    $('#selectTypeBooking').change(function () {
+
+    });
 });
 
-function initPickdate() {
-    var datepicker = $('.datepicker');
-    var selected = $('#selectDay').prop('selectedIndex');
+function initAdminPickdate() {
+    var datepicker = $('#courseAdminDatepicker');
     var picker = datepicker.pickadate('picker');
+    var selected = $('#selectDay').prop('selectedIndex');
 
-    if (selected !== "undefined" && selected !== 0) {
-        var array = [];
-        for (var i = 0; i < 8; ++i) {
-            if (i !== selected)
-                array.push(i);
+    if (picker) {
+        if (selected !== "undefined" && selected !== 0) {
+            var array = [];
+            for (var i = 0; i < 8; ++i) {
+                if (i !== selected)
+                    array.push(i);
+            }
+            datepicker.prop("disabled", false);
+            picker.set('enable', true);
+            picker.set('disable', array);
+        } else {
+            picker.clear();
+            datepicker.prop("disabled", true);
         }
-        datepicker.prop("disabled", false);
-        picker.set('enable', true);
-        picker.set('disable', array);
-    } else {
-        picker.clear();
-        datepicker.prop("disabled", true);
     }
 }
