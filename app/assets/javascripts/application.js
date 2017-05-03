@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require image-picker
-//= require materialize-sprockets
+//= require materialize
+//= require turbolinks
 //= require_tree .
         
