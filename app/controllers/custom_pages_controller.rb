@@ -4,6 +4,7 @@ class CustomPagesController < ApplicationController
 
     def show
         @custom_page = CustomPage.find(params[:id])
+        #@pictures = CustomPage.pictures.all
     end
     
     # GET /custom_pages/new

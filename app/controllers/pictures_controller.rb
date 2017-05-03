@@ -12,6 +12,7 @@ class PicturesController < ApplicationController
     file_name = original_file.original_filename
     img = Picture.create(filename: file_name, alt_text: file_name, caption: params[:formPicture][:caption])
     if img.valid?
+      CustomPage.find(5).pictures << img
       directory = 'public/uploads'
       path = File.join(directory, file_name)
       File.open(path, 'wb') { |t| t.write(original_file.read) }
