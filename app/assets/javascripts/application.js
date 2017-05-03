@@ -16,3 +16,8 @@
 //= require turbolinks
 //= require image-picker
 //= require_tree .
+
+  $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+        
