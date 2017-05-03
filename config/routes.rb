@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   resources :custom_pages, except: :index
 
   resources :custom_pages do
-    resources :gallery, only: [:index, :create, :destroy]
+    resources :gallery, only: [:index]
+    patch 'gallery' => 'gallery#update', as: :update
   end
 
 end

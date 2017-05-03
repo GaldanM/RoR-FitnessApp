@@ -30,7 +30,7 @@ class PicturesController < ApplicationController
     if pics.each(&:destroy)
       flash.now[:success] = 'Pictures successfully deleted'
     else
-      flash.now[:danger] = 'there was a problem while deleting these pictures'
+      flash.now[:danger] = 'There was a problem while deleting these pictures'
     end
     render 'index'
   end

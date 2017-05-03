@@ -8,7 +8,7 @@
       <% end %>
     </ul>
     <ul id="images" class="dropdown-content">
-      <li><%= link_to 'Gallery', pictures_path %></li>
+      <li><%= link_to 'Manage', pictures_path %></li>
       <li class="divider"></li>
       <% CustomPage.all.each do |p| %>
           <li><%= link_to p.title, custom_page_gallery_index_path(p) %></li>
