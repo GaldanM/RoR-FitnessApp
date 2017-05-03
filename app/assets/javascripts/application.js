@@ -10,14 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require image-picker
-//= require materialize-sprockets
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require image-picker
+//= require materialize-sprockets
 //= require_tree .
-
-  $(document).ready(function(){
-      $('.carousel').carousel();
-    });
         

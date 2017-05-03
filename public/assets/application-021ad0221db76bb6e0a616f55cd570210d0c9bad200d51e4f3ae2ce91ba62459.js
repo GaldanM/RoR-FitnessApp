@@ -20254,7 +20254,7 @@ Picker.extend( 'pickadate', DatePicker )
   })();
 
 }).call(this);
-$(document).on('turbolinks:load', function () {
+$(document).on('ready turbolinks:load', function () {
     $('#bookingPublicDatepicker').pickadate({
         firstDay: 1,
         min: new Date($('#minDate').prop('value')),
@@ -20894,7 +20894,7 @@ function initPublicPickdate() {
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
-$(document).on('turbolinks:load', function () {
+$(document).on('ready turbolinks:load', function () {
     $('#selectDay').material_select();
 
     $('.collapsible').collapsible();
@@ -20960,7 +20960,7 @@ function initAdminPickdate() {
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 ;
-$(document).on('turbolinks:load', function () {
+$(document).on('ready turbolinks:load', function () {
     $('#selectDeletePics').imagepicker({
         changed: function () {
             var selected = $(this).val();

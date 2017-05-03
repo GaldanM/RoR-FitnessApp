@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(document).on('ready turbolinks:load', function () {
     $('#bookingPublicDatepicker').pickadate({
         firstDay: 1,
         min: new Date($('#minDate').prop('value')),
