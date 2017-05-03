@@ -1,3 +1,3 @@
-$(document).on('ready turbolinks:load', function () {
+document.addEventListener('turbolinks:load', function () {
     $('#carouselCustomPage').carousel();
 });

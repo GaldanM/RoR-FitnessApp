@@ -12231,7 +12231,7 @@ if (jQuery) {
     });
   };
 
-  $(document).on('turbolinks:load', function(){
+  document.addEventListener('turbolinks:load', function(){
     $('.collapsible').collapsible();
   });
 }( jQuery ));
@@ -12496,7 +12496,7 @@ if (jQuery) {
     });
   }; // End dropdown plugin
 
-  $(document).on('turbolinks:load', function(){
+  document.addEventListener('turbolinks:load', function(){
     $('.dropdown-button').dropdown();
   });
 }( jQuery ));
@@ -12599,7 +12599,7 @@ if (jQuery) {
               closeModal();
             });
             // Return on ESC
-            $(document).on('keyup.modal' + overlayID, function(e) {
+            document.addEventListener('keyup.modal' + overlayID, function(e) {
               if (e.keyCode === 27) {   // ESC key
                 closeModal();
               }
@@ -12649,7 +12649,7 @@ if (jQuery) {
         $(this).off('closeModal');
 
         // Close Handlers
-        $(document).on('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
+        document.addEventListener('click.modalTrigger', 'a[href="#' + modal_id + '"], [data-target="' + modal_id + '"]', function(e) {
           options.startingTop = ($(this).offset().top - $(window).scrollTop()) /1.15;
           openModal($(this));
           e.preventDefault();
@@ -12959,7 +12959,7 @@ if (jQuery) {
     });
   };
 
-  $(document).on('turbolinks:load', function(){
+  document.addEventListener('turbolinks:load', function(){
     $('.materialboxed').materialbox();
   });
 
@@ -13254,7 +13254,7 @@ if (jQuery) {
     }
   };
 
-  $(document).on('turbolinks:load', function(){
+  document.addEventListener('turbolinks:load', function(){
     $('ul.tabs').tabs();
   });
 }( jQuery ));
@@ -13492,7 +13492,7 @@ if (jQuery) {
     return {x: newX, y: newY};
   };
 
-  $(document).on('turbolinks:load', function(){
+  document.addEventListener('turbolinks:load', function(){
      $('.tooltipped').tooltip();
    });
 }( jQuery ));
@@ -14496,7 +14496,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 			onScroll(options.scrollOffset);
 		}, options.throttle || 100);
 		var readyScroll = function(){
-			$(document).on('turbolinks:load', throttledScroll);
+			document.addEventListener('turbolinks:load', throttledScroll);
 		};
 
 		if (!isSpying) {
@@ -14582,7 +14582,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
 })(jQuery);
 (function ($) {
-  $(document).on('turbolinks:load', function() {
+  document.addEventListener('turbolinks:load', function() {
 
     // Function to update labels of text fields
     Materialize.updateTextFields = function() {
@@ -14603,7 +14603,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
 
     // Add active if form auto complete
-    $(document).on('change', input_selector, function () {
+    document.addEventListener('change', input_selector, function () {
       if($(this).val().length !== 0 || $(this).attr('placeholder') !== undefined) {
         $(this).siblings('label').addClass('active');
       }
@@ -14611,12 +14611,12 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     });
 
     // Add active if input element has been pre-populated on document ready
-    $(document).on('turbolinks:load', function() {
+    document.addEventListener('turbolinks:load', function() {
       Materialize.updateTextFields();
     });
 
     // HTML DOM FORM RESET handling
-    $(document).on('reset', function(e) {
+    document.addEventListener('reset', function(e) {
       var formReset = $(e.target);
       if (formReset.is('form')) {
         formReset.find(input_selector).removeClass('valid').removeClass('invalid');
@@ -14635,11 +14635,11 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     });
 
     // Add active when element has focus
-    $(document).on('focus', input_selector, function () {
+    document.addEventListener('focus', input_selector, function () {
       $(this).siblings('label, .prefix').addClass('active');
     });
 
-    $(document).on('blur', input_selector, function () {
+    document.addEventListener('blur', input_selector, function () {
       var $inputElement = $(this);
       var selector = ".prefix";
 
@@ -14680,7 +14680,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
 
     // Radio and Checkbox focus class
     var radio_checkbox = 'input[type=radio], input[type=checkbox]';
-    $(document).on('keyup.radio', radio_checkbox, function(e) {
+    document.addEventListener('keyup.radio', radio_checkbox, function(e) {
       // TAB, check if tabbing to radio or checkbox.
       if (e.which === 9) {
         $(this).addClass('tabbed');
@@ -14764,7 +14764,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     });
 
     // File Input Path
-    $(document).on('change', '.file-field input[type="file"]', function () {
+    document.addEventListener('change', '.file-field input[type="file"]', function () {
       var file_field = $(this).closest('.file-field');
       var path_input = file_field.find('input.file-path');
       var files      = $(this)[0].files;
@@ -14804,7 +14804,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     }
 
     var range_wrapper = '.range-field';
-    $(document).on('change', range_type, function(e) {
+    document.addEventListener('change', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
       thumb.find('.value').html($(this).val());
 
@@ -14816,7 +14816,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
       thumb.addClass('active').css('left', offsetLeft);
     });
 
-    $(document).on('mousedown touchstart', range_type, function(e) {
+    document.addEventListener('mousedown touchstart', range_type, function(e) {
       var thumb = $(this).siblings('.thumb');
 
       // If thumb indicator does not exist yet, create it
@@ -14841,12 +14841,12 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
       }
     });
 
-    $(document).on('mouseup touchend', range_wrapper, function() {
+    document.addEventListener('mouseup touchend', range_wrapper, function() {
       range_mousedown = false;
       $(this).removeClass('active');
     });
 
-    $(document).on('input mousemove touchmove', range_wrapper, function(e) {
+    document.addEventListener('input mousemove touchmove', range_wrapper, function(e) {
       var thumb = $(this).children('.thumb');
       var left;
       var input = $(this).find(range_type);
@@ -14862,7 +14862,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
       }
     });
 
-    $(document).on('mouseout touchleave', range_wrapper, function() {
+    document.addEventListener('mouseout touchleave', range_wrapper, function() {
       if (!range_mousedown) {
 
         var thumb = $(this).children('.thumb');
@@ -15704,9 +15704,9 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
   }; // Plugin end
 }( jQuery ));
 (function ($) {
-  $(document).on('turbolinks:load', function() {
+  document.addEventListener('turbolinks:load', function() {
 
-    $(document).on('click.card', '.card', function (e) {
+    document.addEventListener('click.card', '.card', function (e) {
       if ($(this).find('> .card-reveal').length) {
         if ($(e.target).is($('.card-reveal .card-title')) || $(e.target).is($('.card-reveal .card-title i'))) {
           // Make Reveal animate down and display none
@@ -15737,9 +15737,9 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     autocompleteOptions: {},
   };
 
-  $(document).on('turbolinks:load', function() {
+  document.addEventListener('turbolinks:load', function() {
     // Handle removal of static chips.
-    $(document).on('click', '.chip .close', function(e){
+    document.addEventListener('click', '.chip .close', function(e){
       var $chips = $(this).closest('.chips');
       if ($chips.attr('data-initialized')) {
         return;
@@ -16116,23 +16116,23 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
   };
 }( jQuery ));
 (function ($) {
-  $(document).on('turbolinks:load', function() {
+  document.addEventListener('turbolinks:load', function() {
 
     // jQuery reverse
     $.fn.reverse = [].reverse;
 
     // Hover behaviour: make sure this doesn't work on .click-to-toggle FABs!
-    $(document).on('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
+    document.addEventListener('mouseenter.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
       var $this = $(this);
       openFABMenu($this);
     });
-    $(document).on('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
+    document.addEventListener('mouseleave.fixedActionBtn', '.fixed-action-btn:not(.click-to-toggle):not(.toolbar)', function(e) {
       var $this = $(this);
       closeFABMenu($this);
     });
 
     // Toggle-on-click behaviour.
-    $(document).on('click.fabClickToggle', '.fixed-action-btn.click-to-toggle > a', function(e) {
+    document.addEventListener('click.fabClickToggle', '.fixed-action-btn.click-to-toggle > a', function(e) {
       var $this = $(this);
       var $menu = $this.parent();
       if ($menu.hasClass('active')) {
@@ -16143,7 +16143,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
     });
 
     // Toolbar transition behaviour.
-    $(document).on('click.fabToolbar', '.fixed-action-btn.toolbar > a', function(e) {
+    document.addEventListener('click.fabToolbar', '.fixed-action-btn.toolbar > a', function(e) {
       var $this = $(this);
       var $menu = $this.parent();
       FABtoToolbar($menu);
@@ -16295,7 +16295,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
           $(document).off('click.fabToolbarClose');
         });
 
-        $(document).on('click.fabToolbarClose', function(e) {
+        document.addEventListener('click.fabToolbarClose', function(e) {
           if (!$(e.target).closest(menu).length) {
             toolbarToFAB(btn);
             $(window).off('scroll.fabToolbarClose');
@@ -16445,7 +16445,7 @@ Materialize.toast = function (message, displayLength, className, completeCallbac
   };
 
 
-  $(document).on('turbolinks:load', function() {
+  document.addEventListener('turbolinks:load', function() {
     // Hardcoded .staggered-list scrollFire
     // var staggeredListOptions = [];
     // $('ul.staggered-list').each(function (i) {
@@ -19224,7 +19224,7 @@ Picker.extend( 'pickadate', DatePicker )
     }
   }
 
-  $(document).on('turbolinks:load', function(){
+  document.addEventListener('turbolinks:load', function(){
     $('input, textarea').characterCounter();
   });
 
@@ -20254,7 +20254,7 @@ Picker.extend( 'pickadate', DatePicker )
   })();
 
 }).call(this);
-$(document).on('ready turbolinks:load', function () {
+document.addEventListener('turbolinks:load', function () {
     $('#bookingPublicDatepicker').pickadate({
         firstDay: 1,
         min: new Date($('#minDate').prop('value')),
@@ -20894,7 +20894,7 @@ function initPublicPickdate() {
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
-$(document).on('ready turbolinks:load', function () {
+document.addEventListener('turbolinks:load', function () {
     $('#selectDay').material_select();
 
     $('.collapsible').collapsible();
@@ -20960,7 +20960,7 @@ function initAdminPickdate() {
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 ;
-$(document).on('ready turbolinks:load', function () {
+document.addEventListener('turbolinks:load', function () {
     $('#selectDeletePics').imagepicker({
         changed: function () {
             var selected = $(this).val();

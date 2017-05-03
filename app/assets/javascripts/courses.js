@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+document.addEventListener('turbolinks:load', function () {
     $('#selectDay').material_select();
 
     $('.collapsible').collapsible();

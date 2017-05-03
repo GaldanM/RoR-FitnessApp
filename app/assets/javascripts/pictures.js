@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+document.addEventListener('turbolinks:load', function () {
     $('#selectDeletePics').imagepicker({
         changed: function () {
             var selected = $(this).val();
