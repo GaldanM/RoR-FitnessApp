@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function () {
 
 function initPublicPickdate() {
     var picker = $('#bookingPublicDatepicker').pickadate('picker');
-    var selected = parseInt($('#selectDay').prop('value'));
+    var selected = parseInt($('#courseDay').prop('value'));
 
     var array = [];
     for (var i = 0; i < 8; ++i) {
