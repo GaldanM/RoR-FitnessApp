@@ -1,4 +1,8 @@
 document.addEventListener('turbolinks:load', function () {
+    $('#selectTypeBooking').change(function () {
+        $('#formBooking_type').val($(this).prop('checked'));
+    });
+
     $('#bookingPublicDatepicker').pickadate({
         firstDay: 1,
         min: new Date($('#minDate').prop('value')),
@@ -7,10 +11,6 @@ document.addEventListener('turbolinks:load', function () {
     });
 
     initPublicPickdate();
-
-    $('#selectTypeBooking').change(function () {
-        $('#formBooking_type').val($(this).prop('checked'));
-    });
 });
 
 function initPublicPickdate() {

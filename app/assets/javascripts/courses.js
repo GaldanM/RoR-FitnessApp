@@ -3,15 +3,6 @@ document.addEventListener('turbolinks:load', function () {
 
     $('.collapsible').collapsible();
 
-    $('#courseAdminDatepicker').pickadate({
-        firstDay: 1,
-        min: true,
-        selectMonths: true,
-        selectYears: true
-    });
-
-    initAdminPickdate();
-
     $('#selectDay').change(function () {
         var datepicker = $('#courseAdminDatepicker');
         var picker = datepicker.pickadate('picker');
@@ -34,9 +25,14 @@ document.addEventListener('turbolinks:load', function () {
 
     });
 
-    $('#selectTypeBooking').change(function () {
-
+    $('#courseAdminDatepicker').pickadate({
+        firstDay: 1,
+        min: true,
+        selectMonths: true,
+        selectYears: true
     });
+
+    initAdminPickdate();
 });
 
 function initAdminPickdate() {
