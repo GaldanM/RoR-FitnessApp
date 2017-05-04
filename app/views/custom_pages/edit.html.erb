@@ -1,5 +1,6 @@
 <% provide(:title, 'FitnessApp - ' + 'Edit ' + @custom_page.title) %>
 <div class="container form">
+  <h5 class="filled"><%= 'Edit ' + @custom_page.title %></h5>
   <%= form_for :formCustomPage, method: :patch, url: custom_page_path(@custom_page) do |f| %>
 
       <div class="row">

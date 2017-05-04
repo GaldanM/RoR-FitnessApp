@@ -1,5 +1,6 @@
 <% provide(:title, 'FitnessApp - ' +  'Create a new membership') %>
 <div class="container form">
+  <h5 class="filled">Create a new membership</h5>
   <%= form_for(:formMembership, url: memberships_path) do |f| %>
 
       <div class="row">
@@ -12,7 +13,7 @@
       <div class="row">
         <div class="input-field col s4 offset-s4">
           <%= f.label :price %>
-          <%= f.phone_field :price, required: true %>
+          <%= f.number_field :price, { required: true, step: 0.1 } %>
         </div>
       </div>
 

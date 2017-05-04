@@ -1,5 +1,6 @@
 <% provide(:title, 'FitnessApp - ' +  'Edit booking to ' + @course.title + ' of ' + @booking.name) %>
 <div class="container form">
+  <h5 class="filled"><%= 'Edit booking to ' + @course.title + ' of ' + @booking.name %></h5>
   <%= form_for(:formBooking, method: :patch, url: course_booking_path(@course, @booking)) do |f| %>
 
       <div class="row">

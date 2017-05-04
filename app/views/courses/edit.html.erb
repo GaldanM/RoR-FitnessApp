@@ -1,5 +1,6 @@
 <% provide(:title, 'FitnessApp - ' +  'Edit ' + @course.title + ' course') %>
-<div class="container form" style="text-align: center; margin-top: 50px">
+<div class="container form">
+  <h5 class="filled"><%= 'Edit ' + @course.title + ' course' %></h5>
   <%= form_for(:formCourse, method: :patch, url: course_path(@course)) do |f| %>
 
       <div class="row">

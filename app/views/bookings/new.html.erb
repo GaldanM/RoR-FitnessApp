@@ -1,5 +1,6 @@
 <% provide(:title, 'FitnessApp - ' +  'Register to ' + @course.title) %>
 <div class="container form">
+  <h5 class="filled"><%= 'Register to ' + @course.title %></h5>
   <%= form_for(:formBooking, url: course_bookings_path(@course)) do |f| %>
 
       <div class="row">
@@ -43,7 +44,7 @@
 
       <div class="row">
         <div class="col s4 offset-s4">
-          <input type="hidden" id="courseDay" value="<%= @course.day %>"/>
+            <input type="hidden" id="courseDay" value="<%= @course.day %>"/>
           <input type="hidden" id="minDate" value="<%= @course.start_date %>"/>
           <%= f.label :start_date %>
           <%= f.text_field :start_date, { id: 'bookingPublicDatepicker', placeholder: 'Choose the date', required: true, class: 'datepicker', type: 'date' } %>

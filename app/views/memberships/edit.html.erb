@@ -1,5 +1,6 @@
-<% provide(:title, 'FitnessApp - ' +  'Edit ' + @membership.title + ' membership') %>
+<% provide(:title, 'FitnessApp - ' + 'Edit ' + @membership.title + ' membership') %>
 <div class="container form">
+  <h5 class="filled"><%= 'Edit ' + @membership.title + ' membership' %></h5>
   <%= form_for(:formMembership, method: :patch, url: membership_path(@membership)) do |f| %>
 
       <div class="row">
@@ -12,7 +13,7 @@
       <div class="row">
         <div class="input-field col s4 offset-s4">
           <%= f.label :price %>
-          <%= f.phone_field :price, { value: @membership.price, required: true } %>
+          <%= f.number_field :price, { value: @membership.price, required: true, step: 0.1 } %>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 <% provide(:title, 'FitnessApp - ' +  'Courses') %>
-<div class="container">
+<div class="container<%= Course.all.any? ? '' : ' form' %>">
   <% if Course.all.any? %>
       <ul class="collapsible" data-collapsible="accordion">
         <% Course.all.each do |c| %>
@@ -74,9 +74,9 @@
         <% end %>
       </ul>
   <% else %>
-      <div>
+      <h5>
         You haven't created any course yet, click on the green round button to create one !
-      </div>
+      </h5>
   <% end %>
   <% if current_admin %>
       <div class="fixed-action-btn horizontal">

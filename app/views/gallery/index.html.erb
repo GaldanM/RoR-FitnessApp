@@ -1,12 +1,11 @@
 <% provide(:title, 'Gallery of ' + @custom_page.title + ' - FitnessApp') %>
 <div class="container form">
 
-  <h5><%= 'Select pictures to display in ' + @custom_page.title %></h5>
-
   <% if Picture.all.any? %>
+      <h5 class="filled"><%= 'Select pictures to display in ' + @custom_page.title %></h5>
       <%= form_for(:formCustomgallery, method: :patch, url: custom_page_gallery_index_path(@custom_page)) do |f| %>
           <div class="row">
-            <%= f.select(:pictures, pics(@custom_page.pictures), {}, { multiple: 'multiple', id: 'selectEditPics' }) %>
+            <%= f.select(:pictures, pics(@custom_page.pictures), {}, { class: 'selectPics', multiple: 'multiple', id: 'selectEditPics' }) %>
           </div>
 
           <div class="row">
@@ -16,9 +15,9 @@
           </div>
       <% end %>
   <% else %>
-      <div>
+      <h5>
         You have no pictures in your gallery yet, <%= link_to 'click here', pictures_path %> to solve this problem !
-      </div>
+      </h5>
   <% end %>
 
 </div>

@@ -1,5 +1,5 @@
 document.addEventListener('turbolinks:load', function () {
-    $('#selectDay').material_select();
+    $('select').not('.selectPics').material_select();
 
     $('.collapsible').collapsible();
 

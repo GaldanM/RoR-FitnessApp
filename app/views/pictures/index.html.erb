@@ -1,7 +1,7 @@
 <% provide(:title, 'FitnessApp - ' + 'Manage pictures') %>
 <div class="container form">
 
-  <h5>Add a Picture</h5>
+  <h5 class="filled">Add a Picture</h5>
 
   <%= form_for(:formPicture, url: pictures_path) do |f| %>
 
@@ -32,11 +32,11 @@
   <% if Picture.all.any? %>
       <div class="divider"></div>
 
-      <h5>Delete Pictures</h5>
+      <h5 class="filled">Delete Pictures</h5>
 
       <%= form_for(:formDeletePictures, method: :delete, url: pictures_path) do |f| %>
           <div class="row">
-            <%= f.select(:pictures, pics, {}, { multiple: 'multiple', required: true, id: 'selectDeletePics' }) %>
+            <%= f.select(:pictures, pics, {}, { class: 'selectPics', multiple: 'multiple', required: true, id: 'selectDeletePics' }) %>
           </div>
 
           <div class="row">
