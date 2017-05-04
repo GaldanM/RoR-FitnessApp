@@ -12,7 +12,6 @@ class PicturesController < ApplicationController
     file_name = original_file.original_filename
     img = Picture.create(filename: file_name, alt_text: file_name, caption: params[:formPicture][:caption])
     if img.valid?
-      CustomPage.find(5).pictures << img
       directory = 'public/uploads'
       Dir.mkdir(directory) unless File.exist?(directory)
       path = File.join(directory, file_name)
@@ -29,7 +28,8 @@ class PicturesController < ApplicationController
   def destroy
     array = params[:formDeletePictures][:pictures].drop(1)
     pics = Picture.find(array)
-    if pics.each(&:destroy)
+    directory = 'public/uploads'
+    if pics.each { |p| File.delete(File.join(directory, p.filename)) && p.destroy }
       flash.now[:success] = 'Pictures successfully deleted'
     else
       flash.now[:danger] = 'There was a problem while deleting these pictures'
