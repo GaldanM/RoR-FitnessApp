@@ -14,6 +14,7 @@ class PicturesController < ApplicationController
     if img.valid?
       CustomPage.find(5).pictures << img
       directory = 'public/uploads'
+      Dir.mkdir(directory) unless File.exist?(directory)
       path = File.join(directory, file_name)
       File.open(path, 'wb') { |t| t.write(original_file.read) }
       flash.now[:success] = '\"' + file_name + '\" was successfully uploaded'
