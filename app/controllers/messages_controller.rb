@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
 
   def new
     current_admin && redirect_to(messages_path)
+    @contact_us = CustomPage.find_by(title: 'Contact us')
   end
 
   # GET /messages
@@ -29,6 +30,7 @@ class MessagesController < ApplicationController
       redirect_to root_path
     else
       flash.now[:danger] = 'Your message could not be send'
+      @contact_us = CustomPage.find_by(title: 'Contact us')
       render 'new'
     end
   end

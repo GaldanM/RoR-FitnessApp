@@ -45,7 +45,7 @@
       <div class="row">
         <div class="col s4 offset-s4">
             <input type="hidden" id="courseDay" value="<%= @course.day %>"/>
-          <input type="hidden" id="minDate" value="<%= @course.start_date %>"/>
+          <input type="hidden" id="minDate" value="<%= get_next_day_of_week(@course.day) %>"/>
           <%= f.label :start_date %>
           <%= f.text_field :start_date, { id: 'bookingPublicDatepicker', placeholder: 'Choose the date', required: true, class: 'datepicker', type: 'date' } %>
         </div>

@@ -3,6 +3,7 @@ class MembershipsController < ApplicationController
   # GET /memberships
 
   def index
+    @memberships = CustomPage.find_by(title: 'Memberships')
   end
 
   # GET /memberships/new

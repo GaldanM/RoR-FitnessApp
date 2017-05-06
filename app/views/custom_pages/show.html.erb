@@ -1,13 +1,15 @@
 <% provide(:title, 'FitnessApp - ' + @custom_page.title) %>
 
-<div id="carouselCustomPage" class="carousel">
-  <% @custom_page.pictures.each_with_index do |p, i| %>
-      <a class="carousel-item" href='<%= '#!' + String(i + 1) %>'><img src='<%= File.join('/uploads', p.filename) %>'></a>
-  <% end %>
-</div>
+<% if @custom_page.pictures.any? %>
+    <div id="carouselCustomPage" class="carousel">
+      <% @custom_page.pictures.each_with_index do |p, i| %>
+          <a class="carousel-item" href='<%= '#!' + String(i + 1) %>'><img src='<%= File.join('/uploads', p.filename) %>'></a>
+      <% end %>
+    </div>
+<% end %>
 
-<h1><%= @custom_page.title %></h1>
-<p><%= @custom_page.text %></p>
+<h1 class="center"><%= @custom_page.title %></h1>
+<div class="container"><p><%= @custom_page.text %></p></div>
 
 <% if current_admin %>
     <div class="fixed-action-btn vertical click-to-toggle">

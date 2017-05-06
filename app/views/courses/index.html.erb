@@ -1,5 +1,12 @@
 <% provide(:title, 'FitnessApp - ' +  'Courses') %>
 <div class="container<%= Course.all.any? ? '' : ' form' %>">
+  <% if @planning.pictures.any? %>
+      <div id="carouselCustomPage" class="carousel">
+        <% @planning.pictures.each_with_index do |p, i| %>
+            <a class="carousel-item" href='<%= '#!' + String(i + 1) %>'><img src='<%= File.join('/uploads', p.filename) %>'></a>
+        <% end %>
+      </div>
+  <% end %>
   <% if Course.all.any? %>
       <ul class="collapsible" data-collapsible="accordion">
         <% Course.all.each do |c| %>

@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   # GET /courses
 
   def index
+    @planning = CustomPage.find_by(title: 'Planning')
   end
 
   # GET /courses/new

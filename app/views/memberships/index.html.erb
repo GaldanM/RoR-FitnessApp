@@ -1,4 +1,11 @@
 <% provide(:title, 'FitnessApp - ' +  'Memberships') %>
+<% if @memberships.pictures.any? %>
+    <div id="carouselCustomPage" class="carousel">
+      <% @memberships.pictures.each_with_index do |p, i| %>
+          <a class="carousel-item" href='<%= '#!' + String(i + 1) %>'><img src='<%= File.join('/uploads', p.filename) %>'></a>
+      <% end %>
+    </div>
+<% end %>
 <div class="container table">
   <% if Membership.all.any? %>
       <table class='bordered highlight'>
