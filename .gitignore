@@ -22,3 +22,5 @@
 .idea/
 public/uploads/
 db/schema.rb
+tmp/
+log/
