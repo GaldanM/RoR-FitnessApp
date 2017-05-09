@@ -1,6 +1,4 @@
 <% provide(:title, 'FitnessApp - ' + 'Home') %>
-
-
 <body>
   <div class="header">
     <div class="container">
@@ -9,9 +7,9 @@
         <h2>The best choice for your training</h2>
         <p>
           <% if current_admin %>
-              HELLO ADMIN
+              Hello Administrator
           <% else %>
-              Hello Anonymous, please <%= link_to 'log in', admin_login_path %> if you're an admin
+              Hello there, please <%= link_to 'log in', admin_login_path %> if you're an Administrator
           <% end %>
         </p>
       </div>
@@ -46,5 +44,4 @@
       <div class="clear"></div>
     </div>
   </div>
-  <!-- end header_bottom -->
 </body>
