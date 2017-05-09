@@ -23,6 +23,7 @@ function initPublicPickdate() {
             array.push(i);
     }
     if (picker) {
+        $('#bookingPublicDatepicker').clear();
         picker.set('enable', true);
         picker.set('disable', array);
     }

@@ -35,7 +35,7 @@
           <input type="hidden" id="selectDay" value="<%= @course.day %>"/>
           <input type="hidden" id="minDate" value="<%= @course.start_date %>"/>
           <%= f.label :start_date %>
-          <%= f.text_field :start_date, { value: @booking.date,id: 'bookingPublicDatepicker', placeholder: 'Choose the date', required: true, class: 'datepicker', type: 'date' } %>
+          <%= f.text_field :start_date, { value: @booking.date, id: 'bookingPublicDatepicker', placeholder: 'Choose the date', required: true, class: 'datepicker', type: 'date' } %>
         </div>
       </div>
 

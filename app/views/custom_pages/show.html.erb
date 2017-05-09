@@ -9,7 +9,7 @@
 <% end %>
 
 <h1 class="center"><%= @custom_page.title %></h1>
-<div class="container"><p><%= @custom_page.text %></p></div>
+<div class="container"><p><%= simple_format(@custom_page.text) %></p></div>
 
 <% if current_admin %>
     <div class="fixed-action-btn vertical click-to-toggle">

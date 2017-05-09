@@ -2,6 +2,10 @@
 <html>
   <header>
     <ul id="custom_pages" class="dropdown-content">
+      <% if current_admin %>
+          <li><%= link_to 'Create', new_custom_page_path %></li>
+          <li class="divider"></li>
+      <% end %>
       <% CustomPage.where(editable: true).each do |p| %>
           <li><%= link_to p.title, p %></li>
           <li class="divider"></li>
@@ -26,7 +30,7 @@
                 </a>
               </li>
           <% end %>
-          <% if CustomPage.where(editable: true).any? %>
+          <% if CustomPage.where(editable: true).any? || current_admin %>
               <li>
                 <a class="dropdown-button waves-effect waves-light" data-activates="custom_pages">
                   Pages <i class="material-icons right">arrow_drop_down</i>

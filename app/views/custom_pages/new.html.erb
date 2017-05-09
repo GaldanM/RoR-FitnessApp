@@ -1,5 +1,5 @@
 <% provide(:title, 'FitnessApp - ' +  'Create new Custom Page') %>
-<div>
+<div class="container form">
   <h5 class="filled">Create a new Custom Page</h5>
   <%= form_for(:formCustomPage, url: custom_pages_path) do |f| %>
       <div class="row">
@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col s4 offset-s4">
           <%= link_to 'Cancel', root_path, { :method => :get, class: 'btn red' } %>
-          <%= f.submit 'Save', { class: 'btn green' } %>
+          <%= f.submit 'Create', { class: 'btn green' } %>
         </div>
       </div>
   <% end %>
